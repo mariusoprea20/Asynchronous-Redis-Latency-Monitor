@@ -1,0 +1,14 @@
+#Assumptions
+1. The code assumes that Redis is running and accessible.There is not handling mechanism for Redis connection failure apart from try-catch blocks.
+2. The code assumes that the connection to Redis is succesfull and there shouldn't be any conflic in subscribing and publishing on the "latency-test" channel.
+3. The code assumes that the publisher sends the current date/time everysecond and the subscriber receives it.
+4. The subscriber calculates the latency as the time difference between the current time and the published time. Only the most recent 5 latencies are stored, 
+   and the mean is calculated from those. This assumes that this number of measurements (5) is sufficient to get a representative average latency.
+5. During the execution of the code, Redis connection remains stable.
+
+
+#Limitations
+1. There is not handling mechanism for Redis connection failure apart from try-catch blocks. After a failure, there is no re-try mechanism in place.
+2. The code uses "setInterval" which will run to infinity.
+3. The code doesn't include logic to gracefully shut down or disconnect from Redis ( ex publisher.quit() or subscriber.quit()), which could cause issues during application shutdown,
+  especially in a testing environment.

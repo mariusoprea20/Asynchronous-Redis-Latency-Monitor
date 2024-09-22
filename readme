@@ -1,0 +1,10 @@
+# Prerequisites
+1. Node.js: Ensure you have Node.js installed.
+2. Docker: Install Docker Desktop for your operating system.
+3. VS Code: Recommended but not required, you can use any text editor of your choice.
+
+# Instructions to run de application
+1. Open the directory in VS code and run 'npm install' in the terminal to install all dependancies required.
+3. Ensure Docker is installed and run the command 'docker run -p6379:6379 -it redis:6' in a new terminal (ex CMD for Windows)
+4. Go back to the VS code and run the command 'npm run dev' to start the node server and get the latency tests result.
+5. To run the test, type 'npm test' in VS code terminal
